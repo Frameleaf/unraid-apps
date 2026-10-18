@@ -17,6 +17,15 @@ compatible signed application release with its `nas-manifest.json`. Manager's
 publication does not make an older application release compatible; installation
 and updates still require the application's release-verification gates.
 
+## Screenshots
+
+Manager 0.1.2 interface with demo data. Counts, service states, paths and releases
+shown are examples, not evidence of a qualified Unraid installation.
+
+![Manager overview with demo data](https://raw.githubusercontent.com/Frameleaf/unraid-apps/main/images/manager-overview.jpg)
+![Manager storage mappings with demo data](https://raw.githubusercontent.com/Frameleaf/unraid-apps/main/images/manager-storage.jpg)
+![Manager database backups with demo data](https://raw.githubusercontent.com/Frameleaf/unraid-apps/main/images/manager-backups.jpg)
+
 ## Manager installation
 
 1. Create the state, media, database parent and backup folders on the intended
@@ -69,7 +78,7 @@ file**, then set **Autostart controller path** to
 path. Leave both fields blank for a fresh install without that file mounted.
 Manager needs this writable file to fence source autostart while preserving other
 entries. Follow the
-[offline import guide](https://github.com/Frameleaf/frameleaf-app/blob/master/frameleaf-implementation/docs/docs/administration/import-immich.md).
+[offline import guide](https://github.com/Frameleaf/frameleaf-app/blob/main/docs/docs/administration/import-immich.md).
 
 ## Updates and backups
 
@@ -104,7 +113,7 @@ An ML container on another host cannot share that folder, so Studio stays
 unavailable without a local `frameleaf-ml`. Keep application, ML, database and
 release evidence from the same supported release. Preserve matched database and
 media backups before upgrades. See the
-[manual container guide](https://github.com/Frameleaf/frameleaf-app/blob/master/frameleaf-implementation/docker/README.md).
+[manual container guide](https://github.com/Frameleaf/frameleaf-app/blob/main/docker/README.md).
 
 ## Support and listing status
 
