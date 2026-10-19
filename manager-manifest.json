@@ -2,77 +2,77 @@
   "schemaVersion": 1,
   "component": "frameleaf-manager",
   "repository": "Frameleaf/frameleaf-app",
-  "tag": "manager-v0.1.2",
-  "image": "ghcr.io/frameleaf/frameleaf-manager@sha256:b4ed6e2180e24c8d63259c1456b605bab1fbebbae2a3b800dd7aa14cbfd84436",
-  "sourceCommit": "947568067639827de73e2de7260103df697c7f51",
-  "buildRun": "https://github.com/Frameleaf/frameleaf-app/actions/runs/39006277136",
+  "tag": "manager-v0.2.1",
+  "image": "ghcr.io/frameleaf/frameleaf-manager@sha256:84bc2bddbea16fa9c4efbcafff8cb0c7d6a0ae23efe41f9931cc0024ba3f5de9",
+  "sourceCommit": "af9b3f34dc70a17d3d9c18b57fa0400b5a0688c8",
+  "buildRun": "https://github.com/Frameleaf/frameleaf-app/actions/runs/39187151186",
   "architectures": [
     {
-      "sourceCommit": "947568067639827de73e2de7260103df697c7f51",
+      "sourceCommit": "af9b3f34dc70a17d3d9c18b57fa0400b5a0688c8",
       "repository": "Frameleaf/frameleaf-app",
-      "runId": "39006277136",
+      "runId": "39187151186",
       "runAttempt": "1",
       "architecture": "amd64",
-      "digest": "sha256:0ff9ffc1897fbac800cb416b79de5f48f2bf9bcaf61c63cdb49ad08435f65cf4",
-      "configDigest": "sha256:3d2b5e66722ab3e31457d41540a6f5e80f2fc61de0c8a517c0e6d0b0dbeb1e59",
+      "digest": "sha256:c13f834e24dcb66c73f12d02849246beb134007cf4f4c7efffe8cc3200bb35db",
+      "configDigest": "sha256:f7eb8ad93a2b12d921292ef12b6c19508139f93d444e6e10f4fa1d6fe24a2e76",
       "rootfsDiffIds": [
         "sha256:15f1c8eb1ab18eae260c7fb6296434cbe1ff0e1e30fd814ae92a80dd54005e62",
         "sha256:a1d355ee06208e5a3d1c1252767b83cf65e3438892d8c8d06244a615e8b31fa5",
         "sha256:788fd6d4981e793f8f2ee13469c6886b840aa10ef06a1f925a7f28aa47c598e0",
         "sha256:98fb226d22c4a3af593f6cfd803a31489a7525aad3395453a30ae2d428add872",
-        "sha256:e9f5513c8831acdd707947abf59e79cbecc011453d4fb58c6caf9e631f6abec2",
-        "sha256:0f47f4039be8ccd9f3060841256f0853f38203ebf51c3a1d2e5bfd5c15608a4c",
-        "sha256:6f98a45925d5b371623308559eb3b3eef8e9b0fbb30ddf32ead56adb573e0dcd",
-        "sha256:1e4f2b1b8b5c556fde2c457188d1008b54471a5855d798b3be3cf14eda321cd6",
-        "sha256:fc994aa3511cb4206f13c028626c48a88f0117198ec7b48b14e544433bba7cdf",
-        "sha256:7bad54132082bc098431311be7c198b96d6db234361978e9bde7744007521d3a",
-        "sha256:d7e69146786bb7e127f08a3f6499caaddceeb2f4e2eeb967f0b26e352ccf0432",
-        "sha256:d3c2ff59d6e21b1003ffc107938d713ce9acf8c706bbd014bbb8a3ca1e021714",
-        "sha256:81614d51562b3f00eef45f2c4585dfbd37a1aa9bb9794ecbf8e4da70af6b1947"
+        "sha256:09d73b685d345cdeddd285722b788fc0c20dd2f174961dee910231188ed02b27",
+        "sha256:53799ebb282bf2a2d93e043c59fe973a46e2fe9788880d2ac4bba188631bc566",
+        "sha256:2281118ed2b394aad1aa10ff99d9abbc1bc68a14c0fd875a843218ef7be7bb60",
+        "sha256:63800b470c41ea57c5e8e4237ff64242100b0f69845588553c37bb0cd8b9a0e7",
+        "sha256:857226586764471c1a1186127b7f1921e19bdb9bbd86d6be0ac09da77de411e8",
+        "sha256:2d72611cbdb19a1d94a84aa29d4571c5459c01cf732dc4456ba60d6caffdc98a",
+        "sha256:c0855ae95805aeb9bddbdb4f4c370b578129dfc10289653b75d9b59bf7bbbf15",
+        "sha256:266dc9d65094857d0cf14bf931fb3e64872907ff7f9190c859946e50d4f27e05",
+        "sha256:d1ef88775839b61d6f4eb7ef2a09f33f952287f81caced911da80654a6e1f061"
       ],
-      "archiveSha256": "822e6ba75e46adef0617a1bfad01e6a3281c0df8178e1c97ceb025a2d26e0fc2",
+      "archiveSha256": "183f977c96971610766b3dc71718adcf14e121ecbce63cb3975010bb077e447f",
       "smoke": "passed"
     },
     {
-      "sourceCommit": "947568067639827de73e2de7260103df697c7f51",
+      "sourceCommit": "af9b3f34dc70a17d3d9c18b57fa0400b5a0688c8",
       "repository": "Frameleaf/frameleaf-app",
-      "runId": "39006277136",
+      "runId": "39187151186",
       "runAttempt": "1",
       "architecture": "arm64",
-      "digest": "sha256:fc9f81f853ed97ed6a3355214c1eefda564c6416682607324ee6661b8a43e80d",
-      "configDigest": "sha256:b6332de9e34d4cd48ebeb42ffbe921f62c64dcdbd5dd7c53bbb26fcdba093585",
+      "digest": "sha256:69a5437a3d18e38544078bda594f823a433ca981606dbb8d0aedb9e18827e0f7",
+      "configDigest": "sha256:037b9d4cc5368a5af593639800a94a786ec3553c38e98b0151272b2d4656065d",
       "rootfsDiffIds": [
         "sha256:258ba1f62b513e7bb7492d3cc8ce445e4ef176a14980f193f789b6d7270ae61c",
         "sha256:0a4b69f2114d7221d948013d7c9ae40a3eadc9cffd7dd67da18317f859684f94",
         "sha256:1c9e2e8d0a3c0c0dcff97399767e112d3ec88538a815f931d4c5c01178ac1d30",
         "sha256:9550efcaebf2f4e8dc64fbca5c080cdb0d581b40c6c1e5dd46f1d66789926320",
-        "sha256:6f558e535ac178c43337365b42c4e42734ac5a926049db24d24890447dfbe323",
-        "sha256:b1648d09d8ddfc5d5287bb0cb62bf53d2ae5bbcf8cf694150cdda13c096b2bdd",
-        "sha256:62846c54b699f67f1b0d3b2bbe1fb861f1df5e956fdba562df153d158dc571ec",
-        "sha256:e24c76ad814bb886c6efce0167695eebd626e1d79e13353936a352d916291071",
-        "sha256:2793d9daa320e6d79408e6086208595329ae8a7e8db8e819a773bec89ce2ecb8",
-        "sha256:581f5198f27c48cabdcb7faae740bb9eb4da4de8461614589ca922f3ab092bc4",
-        "sha256:ba466ca607b133b7dbb9cbd7b967af51b453d76bd2b5504e40b8cb38f6d6cea9",
-        "sha256:017497655882cafdf5cfa82e4617377b926e8e64d41e3765281a5c3743051c06",
-        "sha256:53f1938ef6558006c23b35c278eb4fe2d9d6e7fb4047b3f75d4e65f18b6179a2"
+        "sha256:6155eedb5332399f036ca0a3cc8b05509a47602c7c8d23ce01f6aecfbaea2ac5",
+        "sha256:3471ea95d33ec6d147121e8cd7c4a08e0049e830a4c1d7ecd1138fc0e0176d0e",
+        "sha256:4c01a3c6d1bbbc84e2711c5bb1c48babee5336bd92220e2850942ad8dc4599e1",
+        "sha256:4e2b3603a1a81f57b14e0e904e63d4104816feb06254bb673bfc68535cb7caf8",
+        "sha256:2905075ab22a2c531e99b93fd2eee47fdcd364ae525bf405b9c7db617174039e",
+        "sha256:f1bb55dc80bfcbc66b6aa8e19361a9964ba562e8b7c9765708fd61af445ce582",
+        "sha256:f95c079a5afe37d86a74b11d6d0f4e562c3b322209f7abf1513d5ed10d84ae9d",
+        "sha256:5a7fff7912f4fa1ad81ba3c1aff48e1af66de4fa8ad318b05393a6385a308ef9",
+        "sha256:a46901df5c640281d4c50c9a1a476a7c974f84aa4f12d4610b2b156b5dce9ea4"
       ],
-      "archiveSha256": "9162cf1ea7365c0d237ea37d146e4a17e716f2f7839698fe8c01fd1f308bf88e",
+      "archiveSha256": "2c6fb1e9f1f9f28cb41e1afe20f6e7001f7ae8fa4c083bf4ecdcedb1cf663378",
       "smoke": "passed"
     }
   ],
   "installers": {
     "schemaVersion": 1,
-    "sourceCommit": "947568067639827de73e2de7260103df697c7f51",
-    "tag": "manager-v0.1.2",
-    "image": "ghcr.io/frameleaf/frameleaf-manager@sha256:b4ed6e2180e24c8d63259c1456b605bab1fbebbae2a3b800dd7aa14cbfd84436",
+    "sourceCommit": "af9b3f34dc70a17d3d9c18b57fa0400b5a0688c8",
+    "tag": "manager-v0.2.1",
+    "image": "ghcr.io/frameleaf/frameleaf-manager@sha256:84bc2bddbea16fa9c4efbcafff8cb0c7d6a0ae23efe41f9931cc0024ba3f5de9",
     "files": [
       {
         "name": "frameleaf-manager.xml",
-        "sha256": "cedad69b44a7c99e581b298605159e073268639669eb5c3561b54857cc9ac366"
+        "sha256": "6763dd60222d1fa4db5799115c871b2fbf623e15f4af5afd659edcfded5a1395"
       },
       {
         "name": "frameleaf-manager.compose.yaml",
-        "sha256": "d0c60c2ae91a2c9a61e817c97b1c81d7cc79b25a8a3e36761bf00abf7addbfc3"
+        "sha256": "bc1583b727a76a4d008875608897c090cfad53dde591780cda042b8ca752a127"
       }
     ]
   }
