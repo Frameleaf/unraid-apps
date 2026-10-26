@@ -26,6 +26,26 @@ shown are examples, not evidence of a qualified Unraid installation.
 ![Manager storage mappings with demo data](https://raw.githubusercontent.com/Frameleaf/unraid-apps/main/images/manager-storage.jpg)
 ![Manager database backups with demo data](https://raw.githubusercontent.com/Frameleaf/unraid-apps/main/images/manager-backups.jpg)
 
+Manager detects host GPUs through sysfs. It maps `/dev/dri` into the Frameleaf
+server for Intel/AMD video acceleration, or reserves an NVIDIA GPU with compute
+and video capabilities when the NVIDIA driver and Docker runtime are present.
+This also works when ML is disabled. Hosts without a supported GPU keep their CPU
+configuration. Accelerated ML services receive their own device mappings from Manager.
+
+Keep **DockerMan templates** mapped to
+`/boot/config/plugins/dockerMan/templates-user`. Manager writes private XML
+templates for its running database, server and ML containers after starting them.
+They retain the same container names, Compose labels, network aliases, storage,
+device mappings and credentials, allowing DockerMan to edit and recreate them.
+Use Manager for coordinated upgrades, backup and recovery. Manager operations
+regenerate the templates from the running configuration; upgrades may replace
+settings edited directly in DockerMan. Do not run operations in both interfaces
+at the same time. These templates contain credentials: do not share or commit them.
+
+For an existing installation, add the **DockerMan templates** mapping from the
+current Manager template and apply it in DockerMan. Start the
+library from Manager to generate the service templates.
+
 ## Manager installation
 
 1. Create the state, media, database parent and backup folders on the intended
@@ -68,10 +88,10 @@ mapping before import. Retain the original stopped source and its recovery point
 Do not attach Frameleaf PostgreSQL to the source database's physical directory.
 
 For imports, use `docker info --format '{{.DockerRootDir}}'` to identify Docker's
-actual data root. Select its existing `unraid-autostart` file in **Unraid autostart
-file**, then set **Autostart controller path** to
-`/run/frameleaf-host/unraid-autostart`. Do not create a replacement or guess a pool
-path. Leave both fields blank for a fresh install without that file mounted.
+actual data root. Select its existing `unraid-autostart` file (usually
+`/var/lib/docker/unraid-autostart`) in **Unraid autostart file** and apply; Manager
+finds it automatically. Do not create a replacement or guess a pool path. Leave it
+blank for a fresh install. **Autostart controller path** stays blank.
 Manager needs this writable file to fence source autostart while preserving other
 entries. Follow the
 [offline import guide](https://github.com/Frameleaf/frameleaf-app/blob/main/docs/docs/administration/import-immich.md).
@@ -123,3 +143,7 @@ release qualified, retain exact image digests and Unraid versions with fresh
 install, restart, upgrade, failed-upgrade recovery, uninstall-with-data-retention,
 backup restore and supported import/resume evidence. Catalog publication and
 passing package tests do not replace those platform checks.
+
+### Mobile discovery
+
+Manager installations of releases that include `frameleaf-lan-discovery` publish a Bonjour announcement from a separate host-network companion. The Frameleaf server and database stay on their private Docker bridge. The companion follows the published web port and the server's LAN discovery setting; no host Avahi files or manual announcements are needed. A loopback-only installation is not advertised. Older server releases without the companion keep their existing deployment layout.
