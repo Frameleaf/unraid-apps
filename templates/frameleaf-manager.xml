@@ -1,21 +1,40 @@
 <Container version="2">
   <Name>frameleaf-manager</Name>
   <Repository>ghcr.io/frameleaf/frameleaf-manager:latest</Repository>
-  <Registry>https://ghcr.io</Registry>
+  <Registry>https://github.com/orgs/Frameleaf/packages/container/package/frameleaf-manager</Registry>
+  <Shell>sh</Shell>
+  <DefaultTagDescription>Latest published Frameleaf Manager</DefaultTagDescription>
   <Network>bridge</Network>
   <Privileged>false</Privileged>
-  <Project>https://github.com/Frameleaf/frameleaf-app</Project>
-  <Support>https://github.com/Frameleaf/frameleaf-app/issues</Support>
-  <Overview>Install and manage a self-hosted Frameleaf photo and video library. Manager coordinates sibling services through the Docker socket. Encrypted recovery covers the database and configuration, not media originals. Before applying, create the storage folders and follow the linked setup guide for the storage mappings. Create the administrator from your home network on first open.</Overview>
+  <Project>https://frameleaf.app</Project>
+  <Support>https://frameleaf.app/help/</Support>
+  <Overview>Your photos, on your own server. Frameleaf Manager guides you through installing and maintaining Frameleaf: choose the folders that hold your library, review a signed release and bring the server online.
+
+From one local dashboard, check service health, start or stop the library, review updates, manage storage and create encrypted database recovery points. Frameleaf itself brings your photos and videos together with a timeline, smart search, people, places, albums, sharing and editing. Local use needs no Frameleaf Cloud account.
+
+Install this template for the guided setup. Create your Manager administrator from your home network on first open, then follow the linked Unraid guide. Manager controls sibling services through Docker and needs the dedicated folder mappings shown below. Recovery points contain the database and configuration; back up photo and video originals separately. The product screenshots use demonstration data.</Overview>
   <Category>MediaApp:Photos</Category>
+  <ExtraSearchTerms>photos videos photo-library photo-backup gallery albums family self-hosted manager install updates database recovery</ExtraSearchTerms>
+  <Requires>Unraid Docker enabled; dedicated persistent folders for Manager state, original media, the PostgreSQL database and database backups. Keep mapped host and container paths identical. Manager requires access to the Docker socket. See the installation guide for setup and hardware requirements.</Requires>
   <Icon>https://raw.githubusercontent.com/Frameleaf/frameleaf-app/main/design/frameleaf/mark.png</Icon>
+  <Discord>https://discord.gg/cN3U3mv4</Discord>
+  <Reddit>https://www.reddit.com/r/Frameleaf/</Reddit>
+  <Twitter>https://x.com/frameleafapp</Twitter>
+  <DonateLink>https://frameleaf.app/pricing/#supporter</DonateLink>
+  <DonateText>Support Frameleaf with a supporter licence</DonateText>
+  <Photo>https://raw.githubusercontent.com/Frameleaf/unraid-apps/main/images/manager-overview.jpg</Photo>
+  <Screenshot>https://raw.githubusercontent.com/Frameleaf/unraid-apps/main/images/manager-overview.jpg</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/Frameleaf/unraid-apps/main/images/manager-storage.jpg</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/Frameleaf/unraid-apps/main/images/manager-backups.jpg</Screenshot>
+  <Video>https://www.youtube.com/watch?v=bTfFBDHc6OE</Video>
+  <Video>https://www.youtube.com/watch?v=INeVz9NFzOM</Video>
   <TemplateURL>https://raw.githubusercontent.com/Frameleaf/unraid-apps/main/templates/frameleaf-manager.xml</TemplateURL>
-  <ReadMe>https://github.com/Frameleaf/unraid-apps#readme</ReadMe>
+  <ReadMe>https://frameleaf.app/docs/nas/unraid/</ReadMe>
   <License>https://github.com/Frameleaf/unraid-apps/blob/main/LICENSE</License>
   <WebUI>https://[IP]:[PORT:9443]</WebUI>
   <ExtraParams>--label app.frameleaf.manager.role=controller --security-opt no-new-privileges --cap-drop ALL --cap-add CHOWN --cap-add DAC_OVERRIDE --cap-add FOWNER</ExtraParams>
-  <Config Name="Manager HTTPS port" Target="9443" Default="2282" Mode="tcp" Description="Port you open Manager on. 2282 sits next to Frameleaf (2283) and avoids 9443, which Portainer and other apps often use" Type="Port" Display="always" Required="true" Mask="false">2282</Config>
-  <Config Name="Manager HTTPS origin" Target="MANAGER_ORIGIN" Default="" Description="Optional. Leave blank to open Manager by IP address or tower.local. Only for a custom DNS name, enter that exact HTTPS address with port (for example https://nas.example.com:2282) and set Advanced View WebUI to match." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="Manager port" Target="9443" Default="2282" Mode="tcp" Description="Port you open Manager on. 2282 sits next to Frameleaf (2283) and avoids 9443, which Portainer and other apps often use" Type="Port" Display="always" Required="true" Mask="false">2282</Config>
+  <Config Name="Manager origin" Target="MANAGER_ORIGIN" Default="" Description="Optional. Leave blank to open Manager by IP address or tower.local. For a custom name or HTTP access, enter the exact HTTP or HTTPS address with port (for example http://tower.local:2282) and set Advanced View WebUI to match. HTTP is unencrypted; use a trusted network." Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="Manager state" Target="/mnt/user/appdata/frameleaf-manager" Default="/mnt/user/appdata/frameleaf-manager" Mode="rw" Description="Persistent sessions and recovery configuration. When changing the host path, change the container path and MANAGER_DATA too." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/frameleaf-manager</Config>
   <Config Name="Media" Target="/mnt/user/appdata/frameleaf-media" Default="/mnt/user/appdata/frameleaf-media" Mode="rw" Description="Original media. Keep host and container paths identical and update MANAGER_STORAGE_ROOTS." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/frameleaf-media</Config>
   <Config Name="Database parent" Target="/mnt/user/appdata/frameleaf-databases" Default="/mnt/user/appdata/frameleaf-databases" Mode="rw" Description="Physical host storage outside Docker data/docker.img. Keep host and container paths identical and update database root variables." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/frameleaf-databases</Config>
@@ -31,6 +50,6 @@
   <Config Name="DockerMan templates" Target="/run/frameleaf-host/templates-user" Default="/boot/config/plugins/dockerMan/templates-user" Mode="rw" Description="Saves per-container templates so Frameleaf services can also be edited and recreated by Unraid DockerMan." Type="Path" Display="advanced" Required="true" Mask="false">/boot/config/plugins/dockerMan/templates-user</Config>
   <Config Name="Host mount information" Target="/run/frameleaf-host/mountinfo" Default="/proc/1/mountinfo" Mode="ro" Description="Read-only host filesystem evidence for database storage checks." Type="Path" Display="advanced" Required="true" Mask="false">/proc/1/mountinfo</Config>
   <Config Name="Unraid Docker configuration" Target="/run/frameleaf-host/docker.cfg" Default="/boot/config/docker.cfg" Mode="ro" Description="Read-only Unraid appdata and Docker storage configuration." Type="Path" Display="advanced" Required="true" Mask="false">/boot/config/docker.cfg</Config>
-  <Config Name="Unraid autostart file" Target="/run/frameleaf-host/unraid-autostart" Default="" Mode="rw" Description="Required for imports: select the existing unraid-autostart file in Docker's data folder, usually /var/lib/docker/unraid-autostart (check with docker info --format {{.DockerRootDir}}). Manager uses it so Immich cannot start again at boot. Do not point it at a file that does not exist; leave blank for a fresh install." Type="Path" Display="always" Required="false" Mask="false"></Config>
-  <Config Name="Autostart controller path" Target="MANAGER_UNRAID_AUTOSTART" Default="" Description="Leave blank. Manager finds the autostart file mounted above; set this only to override its in-container path." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="Unraid autostart file" Target="/run/frameleaf-host/unraid-autostart" Default="" Mode="rw" Description="Optional override. Leave blank: Manager automatically discovers and accesses Docker's existing Unraid autostart list for imports and recovery." Type="Path" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="Autostart controller path" Target="MANAGER_UNRAID_AUTOSTART" Default="" Description="Optional override for an existing manual autostart mapping. Leave blank for automatic configuration." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
 </Container>

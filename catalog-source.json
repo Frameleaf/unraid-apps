@@ -1,6 +1,6 @@
 {
   "repository": "Frameleaf/frameleaf-app",
-  "sourceCommit": "a539ccfda27d6015fc00d3b689dec93eb6d81dd5",
+  "sourceCommit": "ea95579f96aff8c85c832c305cb4716e910b2eaf",
   "sourcePath": "packaging/nas",
-  "managerRelease": "manager-v0.2.12"
+  "managerRelease": "manager-v1.2.3"
 }
