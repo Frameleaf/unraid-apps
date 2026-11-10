@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 3,
+  "tag": "frameleaf-v1.2.14",
+  "sourceCommit": "13be7dfc75cc3f537abdfd432bf470b8fd5923f4",
+  "buildRun": "https://github.com/Frameleaf/frameleaf-app/actions/runs/42806106514",
+  "images": {
+    "server": "ghcr.io/frameleaf/frameleaf-server@sha256:3baa50b677d1cf94cfd31e73f8ed3561daae1fa7d625db2d6c58ee9bf44ed2d5",
+    "machineLearning": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:8120be15656370494253aeefc4ec0724a55aa97b2881ddd3096d73ce128905a6",
+    "machineLearningVariants": {
+      "cuda": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:e0a12e65385366bbc4da3c87bf8853b32639bb1d4dbf7f7e9441e147e4a4397a",
+      "openvino": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:e2a2d57ab3019346f40fa383be51bcfe9b3dfe52494f0a431525fd219a94afd5",
+      "armnn": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:b2db0d96029cf302de7829d791491a8dd2eb1f183cd4e1f65580598f7e359c37",
+      "rknn": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:191d83c3938d4ba128737f6993818ba449560e7a6c89f32fce42d4a1680236fd",
+      "rocm": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:a768f33889365d8cc35a8cbac94ed5cb39fc0dec2a336daf13df81f5fa0b3980"
+    },
+    "postgres": "ghcr.io/frameleaf/frameleaf-postgres:19rc1-pgvector0.8.7@sha256:3efd98096adf147872590ebdb31ffd58ee18de5e54e2309ca431417279b629ff"
+  },
+  "platforms": [
+    "linux/amd64",
+    "linux/arm64"
+  ],
+  "minimumVersions": {
+    "synologyDsm": "7.2.1",
+    "truenas": "24.10.2.2",
+    "unraid": "7.0"
+  }
+}

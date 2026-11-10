@@ -1,5 +1,5 @@
 name: Publish catalog
-# Keeps the catalog on the newest signed Frameleaf Manager release without a manual run.
+# Keeps the catalog on the newest signed Frameleaf Manager and application releases without a manual run.
 on:
   schedule:
     - cron: '17 */6 * * *'
@@ -7,6 +7,10 @@ on:
     inputs:
       manager-tag:
         description: Rebuild a specific Manager release (blank = newest, skipped if already published)
+        type: string
+        default: ''
+      application-tag:
+        description: Rebuild the Server/ML templates from a specific Frameleaf release (blank = newest)
         type: string
         default: ''
 permissions:
@@ -23,6 +27,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       GITHUB_TOKEN: ${{ github.token }}
       MANAGER_TAG: ${{ inputs['manager-tag'] }}
+      APPLICATION_TAG: ${{ inputs['application-tag'] }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -37,10 +42,12 @@ jobs:
         if: steps.publish.outputs.tag != ''
         env:
           TAG: ${{ steps.publish.outputs.tag }}
+          APP_TAG: ${{ steps.publish.outputs.app_tag }}
         run: |
           set -euo pipefail
-          if git diff --quiet; then echo "No catalog changes"; exit 0; fi
+          git add -A
+          if git diff --cached --quiet; then echo "No catalog changes"; exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -qam "Publish Frameleaf Manager ${TAG#manager-v} catalog"
+          git commit -qm "Publish Frameleaf Manager ${TAG#manager-v} and Frameleaf ${APP_TAG#frameleaf-v} catalog"
           git push
