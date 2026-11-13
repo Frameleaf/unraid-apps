@@ -1,17 +1,17 @@
 {
   "schemaVersion": 3,
-  "tag": "frameleaf-v1.2.20",
-  "sourceCommit": "14571015a141eb4d1a6d2557180eb5a9e0e192cf",
-  "buildRun": "https://github.com/Frameleaf/frameleaf-app/actions/runs/43349713570",
+  "tag": "frameleaf-v1.2.21",
+  "sourceCommit": "430c35a42dcc72afd9c28ce8a831c7b39d684f68",
+  "buildRun": "https://github.com/Frameleaf/frameleaf-app/actions/runs/43399179163",
   "images": {
-    "server": "ghcr.io/frameleaf/frameleaf-server@sha256:7744da735f0502b14b0c23b0a2dbec721ff0d24fc066d2eb658b5eaec4ec5544",
-    "machineLearning": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:8f704a179b6a8b2cd174b68439b6df11ddef696e27b280fe545379e150079188",
+    "server": "ghcr.io/frameleaf/frameleaf-server@sha256:6095f1d120942cb3a548e19a15b5f2b155f0c6b2a26eb0e4609460a30e635623",
+    "machineLearning": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:3ca0413859a3fc3ce65e44076e9f68c1ae86546d14c150502dce1542aae6d5ba",
     "machineLearningVariants": {
-      "cuda": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:1f409403ea95ade9cdf23c9df417844e737cbbf344d05a617572c5701a4718dd",
-      "openvino": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:e8b14d886a5922c4d4123d09e57d2c8b4b98a3ce8847fcb1494c87fe977a17cb",
-      "armnn": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:357ff900d29ef05397bd1fb31a1e1f2b0b8d9cfe91c3fe989e9ad1c1a05fcc53",
-      "rknn": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:99d9a6d3e77268ea143b5fd9dd44b6832ba2d052706511d5224f9f0c09eb1ed7",
-      "rocm": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:cda1ac2cdc745b33e5e9ab6800bc251e44f2099bbff93729f85dcc6ff7771f27"
+      "cuda": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:0a0122798741db92014bd9a9a542aefe2e520a104456770b864e018985c7fec3",
+      "openvino": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:265b4905cdda91267eb5a445ad4dba18fc7052a753f18fa08ed56febcc7050df",
+      "armnn": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:32a1c7d37fe5e0db64b7d8e7e9a3325b6daa7e3bcb95e2c5463647f2f16a8848",
+      "rknn": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:2a2bc46e1d6b3aa08213b40e7f55e790f3ea921bc971f49dd9e34dc7100efc84",
+      "rocm": "ghcr.io/frameleaf/frameleaf-machine-learning@sha256:6c2b3fb559c14ea9128a51460bf2f23a20b073e9e9717a6df896fd1b7b61764a"
     },
     "postgres": "ghcr.io/frameleaf/frameleaf-postgres:19rc1-pgvector0.8.7@sha256:3efd98096adf147872590ebdb31ffd58ee18de5e54e2309ca431417279b629ff"
   },
