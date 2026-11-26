@@ -22,7 +22,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   publish:
-    if: github.server_url != 'https://github.com' && github.ref == 'refs/heads/main'
+    if: github.server_url != 'https://github.com' && github.repository == 'Frameleaf/unraid-apps' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
@@ -40,9 +40,10 @@ jobs:
       - name: Start from GitHub main
         run: |
           set -euo pipefail
-          git remote add github "https://x-access-token:${GH_TOKEN}@github.com/Frameleaf/unraid-apps.git"
-          git fetch -q github main
-          git reset -q --hard github/main
+          # The token goes on each command, never into .git/config.
+          gh_git() { git -c "http.extraheader=Authorization: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\n')" "$@"; }
+          gh_git fetch -q https://github.com/Frameleaf/unraid-apps.git main
+          git reset -q --hard FETCH_HEAD
       - id: publish
         run: scripts/publish.sh
       - name: Commit the refreshed catalog
@@ -57,7 +58,14 @@ jobs:
           git config user.name 'forgejo-actions'
           git config user.email 'forgejo-actions@noreply.code.heroapps.ca'
           git commit -qm "Publish Frameleaf Manager ${TAG#manager-v} and Frameleaf ${APP_TAG#frameleaf-v} catalog"
-          git push github HEAD:refs/heads/main
+          gh_git() { git -c "http.extraheader=Authorization: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\n')" "$@"; }
+          gh_git push https://github.com/Frameleaf/unraid-apps.git HEAD:refs/heads/main
       - name: Mirror main to Forgejo
         # GitHub is the source of truth, so Forgejo's main simply follows it.
-        run: git push --force origin HEAD:refs/heads/main
+        # Push what GitHub has now, not this run's earlier snapshot, and only over the Forgejo tip just read.
+        run: |
+          set -euo pipefail
+          gh_git() { git -c "http.extraheader=Authorization: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\n')" "$@"; }
+          seen=$(git ls-remote origin refs/heads/main | cut -f1)
+          gh_git fetch -q https://github.com/Frameleaf/unraid-apps.git main
+          git push --force-with-lease="refs/heads/main:${seen}" origin FETCH_HEAD:refs/heads/main
